@@ -1,5 +1,6 @@
 package com.async.pool.RecordCenter;
 import java.util.LinkedList;
+import java.util.Vector;
 
 import com.async.pool.msg.CustomMessage;
 
@@ -24,7 +25,7 @@ public class sortUtils {
 	 * @return
 	 */
 
-	public static LinkedList<CustomMessage> quicksort(LinkedList<CustomMessage> taskQuence,
+	public static Vector<CustomMessage> quicksort(Vector<CustomMessage> taskQuence,
 			int left, int right) {
 
 		int dp;
@@ -43,7 +44,7 @@ public class sortUtils {
 
 	}
 
-	static int partition(LinkedList<CustomMessage> taskQuence,
+	static int partition(Vector<CustomMessage> taskQuence,
 			int left, int right) {
 
 		CustomMessage pivot = taskQuence.get(left);

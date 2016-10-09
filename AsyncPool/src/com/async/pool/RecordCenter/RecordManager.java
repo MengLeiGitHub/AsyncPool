@@ -1,6 +1,7 @@
 package com.async.pool.RecordCenter;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 import com.async.pool.RecordCenter.after.AfterTaskHandler;
 import com.async.pool.RecordCenter.after.AfterTaskManager;
@@ -23,7 +24,7 @@ public class RecordManager  implements RecordCenterHandler {
 	
 	AfterTaskHandler afterTaskHandler;
 	BeforeTaskHanlder beforeTaskHanlder;
-	public synchronized static RecordManager Call() {
+	public  static RecordManager Call() {
 
 		if (recordManager == null)
 			recordManager = new RecordManager();
@@ -91,16 +92,16 @@ public class RecordManager  implements RecordCenterHandler {
 	@Override
 	public void sortUtils() {
 		// TODO Auto-generated method stub
-		 LinkedList<CustomMessage> list=getALLTask();
+		Vector<CustomMessage> list=getALLTask();
 		if(list.size()!=0){
 			sortUtils.quicksort(list,0,list.size()-1);
 		}
 	}
 
 	@Override
-	public LinkedList<CustomMessage> getALLTask() {
+	public Vector<CustomMessage> getALLTask() {
 		// TODO Auto-generated method stub
-		return (LinkedList<CustomMessage>) beforeTaskHanlder.getALLTask();
+		return   (Vector<CustomMessage>) beforeTaskHanlder.getALLTask();
 	}
 
 	@Override

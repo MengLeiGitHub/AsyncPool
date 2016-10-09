@@ -1,6 +1,7 @@
 package com.async.pool.RecordCenter.before;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 import com.async.pool.msg.CustomMessage;
 
@@ -59,7 +60,7 @@ public class BeforeTaskManager implements BeforeTaskHanlder{
 	}
 
 	@Override
-	public LinkedList<? extends CustomMessage> getALLTask() {
+	public Vector<? extends CustomMessage> getALLTask() {
 		// TODO Auto-generated method stub
 		return beforeTaskHanlder.getALLTask();
 	}

@@ -1,6 +1,7 @@
 package com.async.pool.RecordCenter.before;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 import com.async.pool.ConstructionCenter.TaskPriority;
 import com.async.pool.msg.CustomMessage;
@@ -12,9 +13,9 @@ import com.async.pool.msg.CustomMessage;
  * 
  */
 public class BeforeTaskCenter implements BeforeTaskHanlder {
-	private LinkedList<CustomMessage> customMessagesQueue;
+	private Vector<CustomMessage> customMessagesQueue;
 
-	private LinkedList<CustomMessage> highterMessagesQueue;
+	private Vector<CustomMessage> highterMessagesQueue;
 
 	private static BeforeTaskCenter beforeTaskCenter;
 
@@ -27,14 +28,14 @@ public class BeforeTaskCenter implements BeforeTaskHanlder {
 	}
 
 	public BeforeTaskCenter() {
-		customMessagesQueue = new LinkedList<CustomMessage>();
-		highterMessagesQueue = new LinkedList<CustomMessage>();
+		customMessagesQueue = new Vector<CustomMessage>();
+		highterMessagesQueue = new Vector<CustomMessage>();
 	}
 
 	public void add(CustomMessage msg) {
 		// TODO Auto-generated method stub
 		if (msg.getTask().getTaskPriority() == TaskPriority.HIGHEST.getValue())
-			highterMessagesQueue.addFirst(msg);
+			highterMessagesQueue.add(0, msg);
 		else {
 			customMessagesQueue.add(msg);
 		}
@@ -57,9 +58,10 @@ public class BeforeTaskCenter implements BeforeTaskHanlder {
 
 	public CustomMessage getMsg() {
 		// TODO Auto-generated method stub
- 		
-		return customMessagesQueue.removeFirst();
-	}
+		if(customMessagesQueue.size()!=0)
+			return customMessagesQueue.remove(0);
+			else return null;
+ 	}
 
 	public int BeforeSize() {
 		// TODO Auto-generated method stub
@@ -72,7 +74,7 @@ public class BeforeTaskCenter implements BeforeTaskHanlder {
 	}
 
 	@Override
-	public LinkedList<? extends CustomMessage> getALLTask() {
+	public Vector<? extends CustomMessage> getALLTask() {
 		// TODO Auto-generated method stub
 		return customMessagesQueue;
 	}
@@ -81,7 +83,7 @@ public class BeforeTaskCenter implements BeforeTaskHanlder {
 	public CustomMessage getHightMsg() {
 		// TODO Auto-generated method stub
 		if(highterMessagesQueue.size()!=0)
-		return highterMessagesQueue.removeFirst();
+		return highterMessagesQueue.remove(0);
 		else return null;
 	}
 

@@ -109,7 +109,7 @@ public class Captain implements Observer<Result> {
 							try {
 								Log.e(" 施工队 队长  等待 ");
 								
-								wait(1000);
+								wait(500);
 							} catch (InterruptedException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();

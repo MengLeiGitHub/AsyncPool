@@ -1,6 +1,7 @@
 package com.async.pool.RecordCenter.before;
 
 import java.util.LinkedList;
+import java.util.Vector;
 
 import com.async.pool.msg.CustomMessage;
 
@@ -19,7 +20,7 @@ public interface BeforeTaskHanlder {
 	
 	public  int   BeforeSize();
 	
-	public   LinkedList<? extends CustomMessage>   getALLTask();
+	public   Vector<? extends CustomMessage>   getALLTask();
 	
 	
 }
